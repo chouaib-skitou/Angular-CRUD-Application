@@ -85,14 +85,14 @@ app.post('/user',(req,res) => {
     let Email = req.body.email;
     let Mobile = req.body.mobile;
 
-    let qr = `INSERT INTO user(FullName,email,mobile) VALUES('${fullname}',${Email}','${Mobile}')`;
+    let qr = `INSERT INTO user(FullName,email,mobile) VALUES('${fullname}','${Email}','${Mobile}')`;
 
     db.query(qr,(err,result) => {
         if(err) {
             console.log(err);
         }
         console.log(result, 'result');
-        rs.send({
+        res.send({
             message:'data inserted successfully'
         });
         /*if(result.length > 0) {
