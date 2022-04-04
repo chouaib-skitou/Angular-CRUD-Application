@@ -108,6 +108,49 @@ app.post('/user',(req,res) => {
 
 });
 
+// update single data
+
+app.put('/user/:id',(req,res) => {
+
+
+    console.log(req.body,'updatedata');
+
+    let gID = req.params.id;
+    let fullname = req.body.FullName;
+    let Email = req.body.email;
+    let Mobile = req.body.mobile;
+
+    let qr = `UPDATE user SET FullName = '${fullname}', email = '${Email}', mobile = '${Mobile}' WHERE id = ${gID}`;
+
+    db.query(qr,(err,result) => {
+        if(err) {
+            console.log(err);
+        }
+        res.send({
+            message: 'data updated successfully'
+        });
+    });
+});
+
+
+// delete single data
+app.delete('/user/:id',(req,res) => {
+
+    let qID = req.params.id;
+
+    let qr = `DELETE FROM user WHERE id = '${qID}' `;
+    db.query(qr,(err,result) => {
+        if(err) {
+            console.log(err);      
+        }
+        res.send({
+            message: 'data deleted successfully'
+        });
+    });
+});
+
+
+
 
 
 app.listen(3000,() => {
