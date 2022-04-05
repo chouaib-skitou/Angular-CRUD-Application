@@ -15,7 +15,7 @@
         </button>
       </div>
 
-    <form [formGroup]="userForm" (ngSubmit)="userSubmit()" >
+    <form [formGroup]="userForm">
 
         <div class="form-group">
             <label>Full Name</label>
@@ -32,7 +32,9 @@
             <input class="form-control" type="text" formControlName="mobile"  placeholder="Enter your Mobile Number">
         </div>
 
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button *ngIf="!getparamid" (click)="userSubmit()"  type="submit" class="btn btn-primary">Create</button>
+
+        <button *ngIf="getparamid" (click)="userUpdate()" type="submit" class="btn btn-primary">Update</button>
 
     </form>
 
