@@ -27,4 +27,18 @@ export class ApiserviceService {
     console.log(data,'createapi =>')
     return this._http.post(`${this.apiUrl}`,data);
   }
+
+  //delete data
+
+  deleteData(id:any):Observable<any> {
+    let ids = id;
+    return this._http.delete(`${this.apiUrl}/${ids}`)
+  }
+
+  //update dataJson
+
+  updateData(data:any,id:any):Observable<any> {
+    let ids = id;
+    return this._http.put(`${this.apiUrl}/${ids}`,data);
+  }
 }

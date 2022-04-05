@@ -95,15 +95,6 @@ app.post('/user',(req,res) => {
         res.send({
             message:'data inserted successfully'
         });
-        /*if(result.length > 0) {
-            res.send({
-                message: 'data inserted successfully'
-            });
-        } else {
-            res.send({
-                message: 'wrong ...'
-            });
-        }*/
     });
 
 });
