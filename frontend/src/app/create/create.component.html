@@ -1,5 +1,13 @@
 <div class="container mt-5">
 
+    <!-- show errormsg -->
+    <div *ngIf="errormsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{ errormsg }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
     <form [formGroup]="userForm" (ngSubmit)="userSubmit()" >
 
         <div class="form-group">

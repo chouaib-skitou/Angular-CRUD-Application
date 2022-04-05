@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ApiserviceService} from '../apiservice.service';
 
 @Component({
   selector: 'app-create',
@@ -8,7 +9,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:ApiserviceService) { }
+
+  errormsg:any;
 
   ngOnInit(): void {
   }
@@ -22,8 +25,11 @@ export class CreateComponent implements OnInit {
   userSubmit() {
     if(this.userForm.valid) {
       console.log(this.userForm.value);
+      this.service.createData(this.userForm.value).subscribe((res)=>{
+        console.log(res,'res==>')
+      });
     } else {
-      console.log('all field is required')
+      this.errormsg = 'all field is required !';
     }
   }
 }
